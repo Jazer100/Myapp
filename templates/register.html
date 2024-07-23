@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Register</title>
+  <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+  <style>
+    body {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+      margin: 0;
+      background: url('{{ url_for('static', filename='pic.jpg') }}') no-repeat;
+      background-size: cover;
+      background-position: center;
+    }
+    
+    .register-card {
+      width: 420px;
+      background: rgba(0, 0, 0, 0.6);
+      border: 2px solid rgba(255, 255, 255, .2);
+      backdrop-filter: blur(9px);
+      color: #fff;
+      border-radius: 12px;
+      padding: 30px 40px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
+    }
+    
+    .register-card h1 {
+      font-size: 36px;
+      text-align: center;
+      margin-bottom: 20px;
+    }
+    
+    .register-card .input-box {
+      position: relative;
+      width: 100%;
+      height: 50px;
+      margin: 15px 0;
+    }
+    
+    .register-card input {
+      width: 100%;
+      height: 100%;
+      background: transparent;
+      border: 2px solid rgba(255, 255, 255, .5);
+      border-radius: 25px;
+      font-size: 16px;
+      color: #fff;
+      padding: 15px 20px;
+      box-sizing: border-box;
+    }
+    
+    .register-card i {
+      position: absolute;
+      right: 20px;
+      top: 50%;
+      transform: translateY(-50%);
+      font-size: 20px;
+      color: #fff;
+    }
+    
+    .register-card .remember-forgot {
+      display: flex;
+      justify-content: space-between;
+      font-size: 14px;
+      margin: 10px 0;
+    }
+    
+    .register-card .remember-forgot label {
+      display: flex;
+      align-items: center;
+    }
+    
+    .register-card .remember-forgot input[type="checkbox"] {
+      accent-color: #fff;
+      margin-right: 5px;
+      width: 16px; /* Adjust width of checkbox */
+      height: 16px; /* Adjust height of checkbox */
+    }
+    
+    .register-card .remember-forgot a {
+      color: #fff;
+      text-decoration: none;
+    }
+    
+    .register-card .remember-forgot a:hover {
+      text-decoration: underline;
+    }
+    
+    .register-card .btn {
+      width: 100%;
+      height: 45px;
+      background: #fff;
+      border: none;
+      border-radius: 25px;
+      cursor: pointer;
+      font-size: 16px;
+      color: #333;
+      font-weight: 600;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+      margin-top: 20px;
+    }
+    
+    .register-card .login-link {
+      font-size: 14px;
+      text-align: center;
+      margin-top: 20px;
+    }
+    
+    .register-card .login-link p a {
+      color: #fff;
+      text-decoration: none;
+      font-weight: 600;
+    }
+    
+    .register-card .login-link p a:hover {
+      text-decoration: underline;
+    }
+  </style>
+</head>
+<body>
+  <div class="register-card">
+    <form method="post">
+      <h1>Register</h1>
+      <div class="input-box">
+        <input type="text" id="typeUsernameX" name="username" placeholder="Username" required>
+        <i class='bx bxs-user'></i>
+      </div>
+      <div class="input-box">
+        <input type="password" id="typePasswordX" name="password" placeholder="Password" required>
+        <i class='bx bxs-lock-alt'></i>
+      </div>
+      <div class="input-box">
+        <input type="password" id="typeConfirmPasswordX" name="confirm_password" placeholder="Confirm Password" required>
+        <i class='bx bxs-lock-alt'></i>
+      </div>
+      <button type="submit" class="btn">Register</button>
+      <div class="login-link">
+        <p>Already have an account? <a href="{{ url_for('login') }}">Login here</a></p>
+      </div>
+    </form>
+  </div>
+</body>
+</html>

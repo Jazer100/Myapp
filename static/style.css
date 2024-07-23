@@ -1,0 +1,48 @@
+/* General styles for the navigation bar */
+.navbar {
+    margin-bottom: 20px;
+}
+
+.navbar-nav {
+    flex-direction: row;
+    justify-content: center;
+    margin: 0 auto;
+}
+
+.navbar-nav .nav-item {
+    margin: 0 10px;
+}
+
+.navbar-nav .nav-link {
+    padding: 0.5rem 1rem;
+}
+
+/* Ensure responsive behavior */
+@media (max-width: 768px) {
+    .navbar-collapse {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .navbar-nav {
+        margin-top: 1rem;
+    }
+
+    .nav-item {
+        margin: 0.5rem 0;
+    }
+}
+
+/* Ensure proper container width */
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 1rem;
+}
+
+h1 {
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    text-align: center;
+    padding: 4%;
+}
+

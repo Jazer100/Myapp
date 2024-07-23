@@ -1,0 +1,58 @@
+{% extends "base.html" %}
+
+{% block title %}Search Products{% endblock %}
+
+{% block content %}
+<div class="container mt-4">
+    <h2>Search Products</h2>
+    <form method="post">
+        <div class="form-group">
+            <input type="text" class="form-control" name="query" placeholder="Search for products by name or code" value="{{ request.form.get('query', '') }}" required>
+        </div>
+        <div class="form-group mt-2">
+            <select class="form-control" name="category">
+                <option value="">All Categories</option>
+                {% for category in categories %}
+                <option value="{{ category }}" {% if category == request.form.get('category') %}selected{% endif %}>{{ category }}</option>
+                {% endfor %}
+            </select>
+        </div>
+        <button type="submit" class="btn btn-primary mt-2">Search</button>
+    </form>
+    {% if products %}
+    <table class="table table-striped mt-4">
+        <thead>
+            <tr>
+                <th>Code</th>
+                <th>Name</th>
+                <th>Price</th>
+                <th>Stock</th>
+                <th>Category</th>
+                <th>Image</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for product in products %}
+            <tr>
+                <td>{{ product[1] }}</td> <!-- Assuming code is at index 1 -->
+                <td>{{ product[2] }}</td> <!-- Assuming name is at index 2 -->
+                <td>${{ product[3] }}</td> <!-- Assuming price is at index 3 -->
+                <td>{{ product[4] }}</td> <!-- Assuming stock is at index 4 -->
+                <td>{{ product[5] }}</td> <!-- Assuming category is at index 5 -->
+                <td><img src="{{ product[6] }}" alt="{{ product[2] }}" width="50"></td> <!-- Assuming image_url is at index 6 -->
+                <td>
+                    <a href="{{ url_for('update_product', id=product[0]) }}" class="btn btn-warning btn-sm">Edit</a> <!-- Assuming id is at index 0 -->
+                    <form action="{{ url_for('delete_product', id=product[0]) }}" method="post" style="display:inline-block;">
+                        <button type="submit" class="btn btn-danger btn-sm">Delete</button>
+                    </form>
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+    {% else %}
+    <p>No products found matching your criteria.</p>
+    {% endif %}
+</div>
+{% endblock %}
